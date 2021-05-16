@@ -12,6 +12,7 @@ import mx.itson.banana.entidades.Pregunta;
 import mx.itson.banana.entidades.Usuario;
 import mx.itson.banana.utilerias.HibernateUtils;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  * Realiza las consultas a la base de datos correspondientes a la entidad de Usuario
@@ -64,5 +65,20 @@ public class UsuarioDAO {
         
     return usuarios;
     
+    }
+    
+    public Usuario getById(int id){
+        Usuario usuario = null;
+        try{
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            CriteriaQuery<Usuario> criteriaQuery = session.getCriteriaBuilder().createQuery(Usuario.class);
+            criteriaQuery.from(Usuario.class);
+            usuario = (Usuario) session.createCriteria(Usuario.class).add(Restrictions.eq("id", id)).list().get(id);
+            session.close();
+            
+        }catch (Exception ex){
+            System.out.println("Error id" + ex);
+        }
+        return usuario;
     }
 }

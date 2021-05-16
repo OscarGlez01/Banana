@@ -151,7 +151,7 @@ public class NuevaCuenta extends javax.swing.JFrame {
     private void btnNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioActionPerformed
         UsuarioDAO usuDao = new UsuarioDAO();
         UsuarioNegocio usuNego = new UsuarioNegocio();
-
+       
         if (usuNego.separarNombres(usuDao.obtenerTodos()).contains(tflNickname.getText())) {
             JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
 

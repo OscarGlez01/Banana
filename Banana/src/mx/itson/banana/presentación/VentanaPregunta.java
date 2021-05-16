@@ -16,31 +16,31 @@ import mx.itson.banana.persistencia.PreguntaDAO;
  * @author adriana
  */
 public class VentanaPregunta extends javax.swing.JFrame {
+
     SimpleDateFormat dia = new SimpleDateFormat("dd-MM-yyyy");
     SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
-    
+
     PreguntaDAO pre = new PreguntaDAO();
 
     /**
      * Creates new form VentanaPregunta
      */
     public VentanaPregunta() {
-        this.setLocationRelativeTo(null);
         initComponents();
-        //pre.Guardar();
+        this.setLocationRelativeTo(null);
         llenarTabla();
     }
-    
+
     public void llenarTabla() {
         List<Pregunta> preguntas = PreguntaDAO.obtenerTodas();
         DefaultTableModel mod = (DefaultTableModel) tblPreguntas.getModel();
-        
+
         for (Pregunta pre : preguntas) {
             mod.addRow(new Object[]{
                 pre.getId(),
-               pre.getUsuario().getNickname() + " el día "+ dia.format(pre.getFecha()) 
-                        + " a las " + hora.format(pre.getFecha()) + " para: " + pre.getCategoria().getNombre(),
-                
+                pre.getUsuario().getNickname()
+                +" el día " + dia.format(pre.getFecha())
+                + " a las " + hora.format(pre.getFecha()),
                 pre.getTitulo()});
         }
     }
@@ -57,6 +57,10 @@ public class VentanaPregunta extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPreguntas = new javax.swing.JTable();
         lblSalir = new javax.swing.JLabel();
+        btnNuevaPregunta = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Preguntas recientes");
@@ -88,27 +92,55 @@ public class VentanaPregunta extends javax.swing.JFrame {
             }
         });
 
+        btnNuevaPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNuevaPregunta.setText("Preguntar");
+        btnNuevaPregunta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNuevaPreguntaMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/banana/imagenes/lupa.png"))); // NOI18N
+
+        jLabel3.setText("B u s c a r : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSalir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNuevaPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel2))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblSalir)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSalir)
+                    .addComponent(btnNuevaPregunta))
+                .addContainerGap())
         );
 
         pack();
@@ -119,8 +151,16 @@ public class VentanaPregunta extends javax.swing.JFrame {
     }//GEN-LAST:event_tblPreguntasMouseClicked
 
     private void lblSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMouseClicked
+        VentanaPrincipal inicio = new VentanaPrincipal();
+        inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblSalirMouseClicked
+
+    private void btnNuevaPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevaPreguntaMouseClicked
+        VentanaNuevaPregunta pregunta = new VentanaNuevaPregunta();
+        pregunta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNuevaPreguntaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -158,7 +198,11 @@ public class VentanaPregunta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnNuevaPregunta;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JTable tblPreguntas;
     // End of variables declaration//GEN-END:variables

@@ -13,10 +13,10 @@
         jdbc:mysql://127.0.0.1:3306/bananadb?useSSL=false
     </property>
     <property name="hibernate.connection.username">
-        me
+        Alejandra
     </property>
     <property name="hibernate.connection.password">
-        14233
+        10Dic01*
     </property>
     <mapping class="mx.itson.banana.entidades.Usuario"/>
     <mapping class="mx.itson.banana.entidades.Pregunta"/>

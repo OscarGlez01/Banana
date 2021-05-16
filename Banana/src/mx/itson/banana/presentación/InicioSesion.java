@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package mx.itson.banana.presentación;
-
-import javax.swing.JOptionPane;
 import mx.itson.banana.negocio.UsuarioNegocio;
 import mx.itson.banana.persistencia.UsuarioDAO;
 
@@ -14,15 +12,21 @@ import mx.itson.banana.persistencia.UsuarioDAO;
  * @author adriana
  */
 public class InicioSesion extends javax.swing.JFrame {
-
+        public int usuarioBase = 12;
+        
     /**
      * Creates new form InicioSesion
      */
     public InicioSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        id();
     }
-
+    
+    public void id (){
+      
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +48,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/banana/imagenes/usuario.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/banana/imagenes/logo.png"))); // NOI18N
 
         jLabel1.setText("Usuario:");
 
@@ -58,7 +62,8 @@ public class InicioSesion extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setText("Todos para Uno");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Wiki sin titulo");
 
         lblAdvertencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdvertencia.setText(".");
@@ -76,43 +81,40 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(98, 98, 98))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(131, 131, 131))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblAdvertencia, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel1))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tflNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                        .addComponent(tflContraseña)))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addComponent(lblNuevaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblAdvertencia, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tflNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .addComponent(tflContraseña)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lblNuevaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel2)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tflNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,7 +128,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInicio)
                     .addComponent(lblNuevaCuenta))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,14 +142,16 @@ public class InicioSesion extends javax.swing.JFrame {
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         UsuarioNegocio usuNego = new UsuarioNegocio();
         UsuarioDAO usuDao = new UsuarioDAO();
-        
-        int indice = usuNego.localizarIndice(usuDao.obtenerTodos(), tflNickname.getText());
-        if (usuNego.validarEntrada(tflNickname.getText(), tflContraseña.getText(), usuDao.obtenerTodos(), indice)) {
-            VentanaPregunta pregunta = new VentanaPregunta();
-            pregunta.setVisible(true);
-            this.dispose();
-        }
 
+        int indice = usuNego.localizarIndice(usuDao.obtenerTodos(), tflNickname.getText());
+        usuarioBase = indice;
+        if (usuNego.validarEntrada(tflNickname.getText(), tflContraseña.getText(), usuDao.obtenerTodos(), indice)) {
+
+            VentanaPrincipal inicio = new VentanaPrincipal();
+            inicio.setVisible(true);
+            
+        }
+        this.dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**

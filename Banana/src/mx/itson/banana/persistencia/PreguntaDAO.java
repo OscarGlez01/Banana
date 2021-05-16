@@ -44,24 +44,14 @@ public class PreguntaDAO {
     /**
      * Añade un nuevo registro de pregunta
      */
-    public void Guardar(){
+    public void Guardar(Usuario usuario, Categoria categoria, String titulo){
         try{
             
             Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             
-            //Debería ser un usuario ya existente
-            Usuario usuario = new Usuario();
-            usuario.setNombre("Adriana Michelle");
-            usuario.setEmail("michh@hotmail.es");
-            usuario.setNickname("michimichi");
-            
-            //debería ser una categoría ya existente
-            Categoria categoria = new Categoria();
-            categoria.setNombre("Geografía");
-            
             Pregunta pregunta = new Pregunta();
-            pregunta.setTitulo("¿Cuál es el continente más grande del mundo?");
+            pregunta.setTitulo(titulo);
             pregunta.setUsuario(usuario);
             pregunta.setCategoria(categoria);
             //fecha actual

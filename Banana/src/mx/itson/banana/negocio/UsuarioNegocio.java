@@ -19,10 +19,9 @@ public class UsuarioNegocio {
     /**
      * Crea una lista que contiene solamente los nombres (Nickname) de registro
      * de los usuarios
-     *
      * @param usuarios Lista objetos de tipo Usuario
      * @return Lista de tipo String
-     */
+    */ 
     public List<String> separarNombres(List<Usuario> usuarios) {
         List<String> nicknames = new ArrayList();
 
@@ -33,14 +32,15 @@ public class UsuarioNegocio {
 
         return nicknames;
     }
-
+    
+   
     /**
      * Crea una lista que contiene solamente las contraseñas de los usuarios
      * registrados
      *
      * @param usuarios Lista de objetos de tipo Usuario
      * @return Lista de tipo String
-     */
+    */ 
     public List<String> separarCorreos(List<Usuario> usuarios) {
         List<String> emails = new ArrayList();
 
@@ -96,5 +96,30 @@ public class UsuarioNegocio {
         }
         return index;
     }
+    /*
+    public boolean buscarCorreo(List<Usuario> usuarios, String correo){
+        boolean encontrado = false;
+        
+        for (int i = 0; i < usuarios.size(); i++) {
+          if (correo.equals(usuarios.get(i).getNickname())) {
+                encontrado = true;
+                break;
+            }  
+        }
+        
+        return encontrado;
+    }
     
+    public boolean buscarNickname(List<Usuario> usuarios, String nickname){
+        boolean encontrado = false;
+        
+        for (int i = 0; i < usuarios.size(); i++) {
+          if (nickname.equals(usuarios.get(i).getNickname())) {
+                encontrado = true;
+                break;
+            }  
+        }
+        
+        return encontrado;
+    }*/
 }
